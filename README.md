@@ -265,5 +265,6 @@ Bouton "Se connecter" : Pour valider l'authentification et accéder au tableau d
 
 Pied de page : © 2026 Gestion des Commandes
 
+## Auteurs
 
-
+ZOUHAIR EL MAZI
