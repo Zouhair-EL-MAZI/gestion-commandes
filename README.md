@@ -23,25 +23,24 @@ Petit projet Laravel (TP) pour gérer des commandes, produits et clients.
 ## Routes principales
 Les routes ci-dessous sont définies dans `routes/web.php` (extrait) :
 
-- `GET /` — page d'accueil (vue `welcome`).
-- `resource commandes` (protégées par `auth`) — routes RESTful pour les commandes :
-  - `GET /commandes` — lister les commandes
-  - `GET /commandes/create` — formulaire d'ajout
-  - `POST /commandes` — créer une commande
-  - `GET /commandes/{id}` — voir le détail d'une commande
-  - `GET /commandes/{id}/edit` — formulaire de modification
-  - `PUT/PATCH /commandes/{id}` — mettre à jour
-  - `DELETE /commandes/{id}` — supprimer
-- `POST /commandes/{id}/add-product` — ajouter un produit à la commande (`CommandeController@addProduct`).
-- Authentification :
-  - `GET /RegisterForm` — formulaire d'inscription
-  - `POST /Register` — enregistrer un utilisateur
-  - `GET /LoginForm` — formulaire de connexion
-  - `POST /Login` — action de connexion
-  - `POST /Logout` — déconnexion
-- Statistiques (préfixe `stats`, protégées par `auth`) :
-  - `GET /stats/clients` — statistiques commandes par client (`StatsController@statsClients`)
-  - `GET /stats/produits` — chiffre d'affaires par produit (`StatsController@statsProduits`)
+| Méthode | Route | Description | Contrôleur / Notes |
+|---|---|---|---|
+| GET | / | Page d'accueil (vue `welcome`) | — |
+| GET | /commandes | Lister les commandes | `CommandeController@index` (protégée par `auth`) |
+| GET | /commandes/create | Formulaire d'ajout | `CommandeController@create` |
+| POST | /commandes | Créer une commande | `CommandeController@store` |
+| GET | /commandes/{id} | Voir le détail d'une commande | `CommandeController@show` |
+| GET | /commandes/{id}/edit | Formulaire de modification | `CommandeController@edit` |
+| PUT/PATCH | /commandes/{id} | Mettre à jour | `CommandeController@update` |
+| DELETE | /commandes/{id} | Supprimer | `CommandeController@destroy` |
+| POST | /commandes/{id}/add-product | Ajouter un produit à la commande | `CommandeController@addProduct` |
+| GET | /RegisterForm | Formulaire d'inscription | — |
+| POST | /Register | Enregistrer un utilisateur | — |
+| GET | /LoginForm | Formulaire de connexion | — |
+| POST | /Login | Action de connexion | — |
+| POST | /Logout | Déconnexion | — |
+| GET | /stats/clients | Statistiques — commandes par client | `StatsController@statsClients` (protégée par `auth`) |
+| GET | /stats/produits | Chiffre d'affaires par produit | `StatsController@statsProduits` (protégée par `auth`) |
 
 ## Emplacements clés
 - Modèles : `app/Models` (`Client`, `Produit`, `Commande`, `DetailCommande`, `User`)
@@ -49,7 +48,6 @@ Les routes ci-dessous sont définies dans `routes/web.php` (extrait) :
 - Migrations : `database/migrations`
 - Seeders : `database/seeders`
 - Routes web : `routes/web.php`
-- Assets publics : `public/` (ajouter captures dans `public/screenshots`, vidéos dans `public/videos`)
 
 ## Installation & usage rapide
 1. Copier `.env.example` en `.env` et configurer la DB.
@@ -85,9 +83,10 @@ php artisan db:seed
 php artisan serve
 ```
 
-7. 📸 Captures d'écran - Description détaillée
+📸 Captures d'écran - Description détaillée
 
 1. Page d'inscription
+
 ![Page d'inscription](public/images/photo1.png)
 
 Description :
@@ -110,6 +109,7 @@ Bouton "S'inscrire" pour valider l'inscription
 Lien "Se connecter" pour les utilisateurs ayant déjà un compte
 
 2. Liste des commandes
+
 ![Liste des commandes](public/images/photo2.png)
 
 Description :
@@ -138,6 +138,7 @@ Actions disponibles pour chaque commande :
 Pagination pour naviguer entre les pages (10 commandes par page)
 
 3. Formulaire d'ajout de commande
+
 ![Ajouter commande](public/images/photo3.png)
 
 Description :
@@ -152,6 +153,7 @@ Bouton "Enregistrer" : Pour valider et créer la commande
 Bouton "Retour" : Pour revenir à la liste des commandes sans enregistrer
 
 4. Statistiques - Commandes par client
+
 ![Commandes par client](public/images/photo4.png)
 
 Description :
@@ -170,6 +172,7 @@ Zouhair : 1 commande
 Cette vue permet d'identifier rapidement les clients les plus actifs
 
 5. Statistiques - Chiffre d'affaires par produit
+
 ![CA par produit](public/images/photo5.png)
 
 Description :
@@ -192,6 +195,7 @@ alias : 902.80 DH
 Cette vue permet d'identifier les produits les plus rentables
 
 6. Détails d'une commande
+
 ![Détails commande](public/images/photo6.png)
 
 Description :
@@ -225,6 +229,7 @@ Bouton "Retour à la liste" pour revenir à la liste des commandes
 
 
 7. Page de connexion
+
 ![Page de connexion](public/images/photo7.png)
 
 Description :
